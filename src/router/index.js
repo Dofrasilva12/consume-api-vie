@@ -28,6 +28,6 @@ export default new Router({
       path: '/ordenes',
       name: 'Ordenes',
       component: Ordenes
-    },
+    }
   ]
 })
