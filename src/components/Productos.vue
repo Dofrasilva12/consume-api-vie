@@ -65,7 +65,7 @@ import Vue from 'vue'
   },
   methods: {
       deleteProducto(id, i) {
-          fetch("https://creating-rails-5-api-flower.herokuapp.com/productos" + id, {
+          fetch("https://creating-rails-5-api-flower.herokuapp.com/productos/" + id, {
                   method: "DELETE"
               })
               .then(() => {
@@ -74,7 +74,7 @@ import Vue from 'vue'
               })
       },
       editProducto(producto) {
-          fetch("https://creating-rails-5-api-flower.herokuapp.com/productos" + producto.id, {
+          fetch("https://creating-rails-5-api-flower.herokuapp.com/productos/" + producto.id, {
                   body: JSON.stringify(producto),
                   method: "PUT",
                   headers: {

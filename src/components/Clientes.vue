@@ -17,12 +17,12 @@
                     </div>
               </tr>
             </thead>
-      <li v-for="(producto, i) in clientes" v-bind:index="i" v-bind:key="producto.id">
+      <li v-for="(cliente, i) in clientes" v-bind:index="i" v-bind:key="cliente.id">
         <div class="scrolling-wrapper" style="float: left">
 
             <tr>
                 <td style="float: left">
-                    <div v-if="editarCliente === producto.id" class="scrolling-wrapper">
+                    <div v-if="editarCliente === cliente.id" class="scrolling-wrapper">
                           <input v-on:keyup.13="editCliente(cliente.nombre_cliente)" v-model="nuevoCliente.nombre_cliente"/>
                           <input v-on:keyup.13="editCliente(cliente.rfc)" v-model="nuevoCliente.rfc"/>
            
@@ -65,16 +65,17 @@ import Vue from 'vue'
   },
   methods: {
       deleteCliente(id, i) {
-          fetch("https://creating-rails-5-api-flower.herokuapp.com/clientes" + id, {
+          fetch("https://creating-rails-5-api-flower.herokuapp.com/clientes/" + id, {
                   method: "DELETE"
               })
               .then(() => {
-                  this.clientes.splice(i, 1);
+                  this.cliente.splice(i, 1);
                   console.log("DELETED! xD");
               })
+              .catch(err =>{console.log(err)})
       },
       editCliente(cliente) {
-          fetch("https://creating-rails-5-api-flower.herokuapp.com/clientes" + cliente.id, {
+          fetch("https://creating-rails-5-api-flower.herokuapp.com/clientes/" + cliente.id, {
                   body: JSON.stringify(cliente),
                   method: "PUT",
                   headers: {
@@ -116,6 +117,7 @@ import Vue from 'vue'
       .then((data) => {
           console.log(data);
           this.clientes = data;
+          console.log("dd")
       })
   },
 }

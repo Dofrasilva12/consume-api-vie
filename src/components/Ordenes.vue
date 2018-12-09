@@ -74,7 +74,7 @@ import Vue from 'vue'
   },
   methods: {
       deleteOrden(id, i) {
-          fetch("https://creating-rails-5-api-flower.herokuapp.com/ordenes" + id, {
+          fetch("https://creating-rails-5-api-flower.herokuapp.com/ordenes/" + id, {
                   method: "DELETE"
               })
               .then(() => {
@@ -83,7 +83,7 @@ import Vue from 'vue'
               })
       },
       editOrden(orden) {
-          fetch("https://creating-rails-5-api-flower.herokuapp.com/ordenes" + orden.id, {
+          fetch("https://creating-rails-5-api-flower.herokuapp.com/ordenes/" + orden.id, {
                   body: JSON.stringify(orden),
                   method: "PUT",
                   headers: {
